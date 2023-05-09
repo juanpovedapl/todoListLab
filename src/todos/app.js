@@ -5,6 +5,7 @@ import { renderTodos } from './use-cases';
 
 const ElementIds = {
     TodoList: '.todo-list',
+    newTodoInput: '#new-todo-input',
 }
 
 /**
@@ -23,4 +24,27 @@ export const App = ( elementId ) => {
         document.querySelector(elementId).append(app);
         displayTodos();
     })();
+
+    // Referencias HTML
+    const newDescriptionInput = document.querySelector( ElementIds.newTodoInput );
+    const todoListUL = document.querySelector( ElementIds.TodoList );
+
+    //Listener 
+    newDescriptionInput.addEventListener('keyup', (event) =>{
+        if (event.keyCode !== 13 ) return;
+        if (event.target.value.trim().length === 0) return;
+
+        todoStore.addTodo (event.target.value);
+        displayTodos();
+        event.target.value = '';
+    });
+
+    todoListUL.addEventListener('click', ( event ) => {
+
+        const element = event.target.closest('[data-id]'); // closest busca el elemento padre más cerano con la class data'id
+        todoStore.toggleTodo(element.getAttribute('data-id'));
+        displayTodos();
+
+
+    });
 }

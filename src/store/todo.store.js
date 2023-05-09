@@ -32,7 +32,7 @@ const loadStore = () => {
  */
 const addTodo = ( description ) => {
     if ( !description) throw new Error ('Descriptions is required');
-    state.todos.push (new Todd(description) );
+    state.todos.push (new Todo(description) );
 
 }
 const getTodos = (filter = Filters.All) => {
