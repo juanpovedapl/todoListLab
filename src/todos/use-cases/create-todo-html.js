@@ -12,7 +12,7 @@ export const  createTodoHTML = (todo ) => {
 
     const html= `
         <div class="view">
-            <input class="toggle" type="checkbox" ${ done ? 'cheked': ''}>
+            <input class="toggle" type="checkbox" ${ done ? 'checked': ''}>
             <label>${description}</label>
             <button class="destroy"></button>
         </div>
