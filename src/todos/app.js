@@ -47,4 +47,14 @@ export const App = ( elementId ) => {
 
 
     });
+
+    todoListUL.addEventListener('click', ( event ) => {
+        const isDestroyELement = event.target.className === 'destroy';
+        const element = event.target.closest('[data-id]'); // closest busca el elemento padre más cerano con la class data'id
+        if ( !element || !isDestroyELement) return;
+         todoStore.deleteTodo(element.getAttribute('data-id'))
+        displayTodos();
+
+
+    });
 }
